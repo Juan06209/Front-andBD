@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import ListadoCompras from './compras/ListadoCompras';
+import AgregarCompra from './compras/AgregarCompra';
+import EditarCompra from './compras/EditarCompra';
+import Navegacion from './plantilla/Navegacion';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <BrowserRouter>
+        <Navegacion />
+        <Routes>
+          <Route exact path="/" element={<ListadoCompras/>} />
+          <Route exact path="/crear" element={<AgregarCompra/>} />
+          <Route exact path="/editar/:id" element={<EditarCompra/>} />
+        </Routes>
+      </BrowserRouter>
+
     </div>
   );
 }
-
 export default App;
